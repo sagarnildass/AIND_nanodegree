@@ -13,3 +13,6 @@ In this lesson, we'll build a Game-Playing agent that defeats opponents in Isola
 
 In this lab, we'll use depth-first search, breadth-first search uniform-cost search and A* search to build a pacman game playing agent who can find the shortest way through the maze to the goal and reach there.
 
+### [Lab: Simulated Annealing](/aind-Simulated_Annealing)
+
+In this exercise you will check your understanding of simulated annealing by implementing the algorithm in a Jupyter notebook and using it to solve the Traveling Salesman Problem (TSP) between US state capitals.
