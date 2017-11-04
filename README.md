@@ -16,3 +16,7 @@ In this lab, we'll use depth-first search, breadth-first search uniform-cost sea
 ### [Lab: Simulated Annealing](/aind-Simulated_Annealing)
 
 In this exercise you will check your understanding of simulated annealing by implementing the algorithm in a Jupyter notebook and using it to solve the Traveling Salesman Problem (TSP) between US state capitals.
+
+### [Lab: Constraint Satisfaction Problems](/aind-Constraint_Satisfaction)
+
+In this exercise you will check your understanding of Constraint Satisfaction Problems by solving the N-queens problem using symbolic constraints and backtracking search in a Jupyter notebook.
