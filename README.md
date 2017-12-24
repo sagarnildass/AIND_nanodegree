@@ -20,3 +20,7 @@ In this exercise we will check our understanding of simulated annealing by imple
 ### [Lab: Constraint Satisfaction Problems](/aind-Constraint_Satisfaction)
 
 In this exercise we will check our understanding of Constraint Satisfaction Problems by solving the N-queens problem using symbolic constraints and backtracking search in a Jupyter notebook.
+
+### [Lab: Build a recognizer based on Hidden Markov models](/aind_Recognizer)
+
+In this project, we will build a system that can recognize words communicated using the American Sign Language (ASL). We will be provided a preprocessed dataset of tracked hand and nose positions extracted from video. Our goal would be to train a set of Hidden Markov Models (HMMs) using part of this dataset to try and identify individual words from test sequences.
