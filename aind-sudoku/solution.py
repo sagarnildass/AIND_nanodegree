@@ -1,3 +1,4 @@
+from visualize import visualize_assignments
 import itertools
 
 
@@ -109,9 +110,12 @@ def eliminate(values):
     solved_values = [box for box in values.keys() if len(values[box]) == 1]
     for box in solved_values:
         digit = values[box]
-        # Remove solved digit from the list of possible values for each peer
+        # Log which digit is being eliminated and from which peers
+        print(f"Eliminating {digit} from peers of {box}")
         for peer in peers[box]:
-            values[peer] = values[peer].replace(digit,'')
+            if digit in values[peer]:
+                print(f" - Removing {digit} from {peer}")
+                values[peer] = values[peer].replace(digit, '')
     return values
 
 
@@ -129,7 +133,7 @@ def only_choice(values):
             # that contain the digit in question
             dplaces = [box for box in unit if digit in values[box]]
             if len(dplaces) == 1:
-                # This box is the only choice for this digit
+                print(f"{digit} can only go in {dplaces[0]} in the unit {unit}")
                 values = assign_value(values, dplaces[0], digit)
     return values
 
@@ -170,15 +174,20 @@ def reduce_puzzle(values):
     stalled = False
     while not stalled:
         solved_values_before = len([box for box in values.keys() if len(values[box]) == 1])
+        print(f"Reducing puzzle... Solved values so far: {solved_values_before}")
+
         # Apply the eliminate exclusion strategy
         values = eliminate(values)
+
         # Apply the only choice assignment strategy
         values = only_choice(values)
+
         solved_values_after = len([box for box in values.keys() if len(values[box]) == 1])
-        # Stop applying these strategies if we stop making box-solving progress
         stalled = solved_values_before == solved_values_after
+
         # Sanity check: never eliminate all digits from a box's possibilities
         if len([box for box in values.keys() if len(values[box]) == 0]):
+            print("Reduction failed. No valid solutions.")
             return False
     return values
 
@@ -194,14 +203,20 @@ def search(values):
     # First, reduce the puzzle using the previous function
     values = reduce_puzzle(values)
     if values is False:
+        print("Search failed. Backtracking...")
         return False  # Failed earlier
     if all(len(values[s]) == 1 for s in boxes):
+        print("Sudoku solved!")
         return values  # Solved!
+
     # Choose one of the unfilled squares with the fewest possibilities
-    n,s = min((len(values[s]), s) for s in boxes if len(values[s]) > 1)
+    n, s = min((len(values[s]), s) for s in boxes if len(values[s]) > 1)
+    print(f"Branching on {s} with possibilities {values[s]}")
+
     # Now use recurrence to solve each one of the resulting sudokus,
     # and if one returns a value (not False), return that answer!
     for value in values[s]:
+        print(f"Trying {value} for {s}")
         new_sudoku = values.copy()
         new_sudoku[s] = value
         attempt = search(new_sudoku)
@@ -230,13 +245,10 @@ solve('2.............62....1....7...6..8...3...9...7...6..4...4....8....52......
 
 if __name__ == '__main__':
     diag_sudoku_grid = '2.............62....1....7...6..8...3...9...7...6..4...4....8....52.............3'
-    display(solve(diag_sudoku_grid))
-
-    try:
-        from visualize import visualize_assignments
+    assignments = []  # Collect assignments during solving
+    result = solve(diag_sudoku_grid)
+    if result:
+        print("Sudoku Solved!")
         visualize_assignments(assignments)
-
-    except SystemExit:
-        pass
-    except:
-        print('We could not visualize your board due to a pygame issue. Not a problem! It is not a requirement.')
+    else:
+        print("No solution exists!")

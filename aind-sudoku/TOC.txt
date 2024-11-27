@@ -1,0 +1,92 @@
+1\. **Introduction**
+
+    - What is Sudoku?
+
+    - Why Diagonal Sudoku?
+
+    - Why Build an AI for Sudoku?
+
+
+2\. **Project Overview**
+
+    - Objectives
+
+    - Key Features
+
+    - Technologies Used
+
+3\. **Understanding Constraint Propagation**
+
+    - What is Constraint Propagation?
+
+    - Role in Sudoku Solving
+
+4\. **Implementing the Naked Twins Strategy**
+
+    - What are Naked Twins?
+
+    - Algorithm Explanation
+
+    - Code Implementation
+
+5\. **Handling Diagonal Constraints**
+
+    - Defining Diagonal Sudoku
+
+    - Integrating Diagonals into the Solver
+
+    - Code Implementation
+
+6\. **Setting Up the Development Environment**
+
+    - Prerequisites
+
+    - Installing Python and Anaconda
+
+    - Optional: Installing Pygame for Visualization
+
+7\. **Code Structure and Explanation**
+
+    - Overview of `solution.py`
+
+    - Key Functions and Their Roles
+
+    - Understanding `unitlist`, `units`, and `peers`
+
+8\. **Visualization of the Solver**
+
+    - Using Pygame for Visualization
+
+    - Running the Visualization
+
+    - Interpreting the Visualization Output
+
+9\. **Testing the Solver**
+
+    - Running Unit Tests with `test_solution.py`
+
+    - Sample Test Cases
+
+    - Debugging Common Issues
+
+10\. **Submitting the Project**
+
+    - Preparing Your Submission
+
+    - Using Udacity's Project Assistant
+
+    - Final Submission Steps
+
+11\. **Conclusion**
+
+    - Recap of Key Concepts
+
+    - Potential Enhancements
+
+    - Final Thoughts
+
+12\. **References**
+
+    - Useful Links
+
+    - Further Reading
